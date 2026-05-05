@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getMovieDetails } from '../api';
+import { getMovieDetails } from "../services/movieApi";
 import { useFavorites } from '../context/FavoritesContext';
-import Spinner from '../components/Spinner';
 import './MovieDetail.css';
 
 function MovieDetail() {
@@ -28,7 +27,7 @@ function MovieDetail() {
     fetch();
   }, [id]);
 
-  if (loading) return <Spinner />;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p className="detail-error">⚠️ {error}</p>;
   if (!movie) return null;
 

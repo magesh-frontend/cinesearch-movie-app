@@ -12,6 +12,10 @@
   border-color: var(--accent);
 }
 
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
 .card-poster {
   position: relative;
   aspect-ratio: 2/3;
@@ -23,7 +27,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .movie-card:hover .card-poster img {

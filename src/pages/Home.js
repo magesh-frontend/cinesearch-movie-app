@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { searchMovies } from '../api';
+import { searchMovies } from "../services/movieApi";
 import MovieCard from '../components/MovieCard';
-import Spinner from '../components/Spinner';
 import './Home.css';
 
 function Home() {
@@ -94,7 +93,9 @@ function Home() {
         </>
       )}
 
-      {loading && <Spinner />}
+      <div className="loading-container">
+  <div className="loader"></div>
+</div>
 
       {!loading && hasMore && movies.length > 0 && (
         <div className="load-more-wrap">
