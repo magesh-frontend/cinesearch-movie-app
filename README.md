@@ -90,7 +90,7 @@ VITE_OMDB_API_KEY=your_api_key
 
 ## 🌐 Live Demo
 
-cinesearch-movie-app-zo85.vercel.app
+https://cinesearch-movie-app-zo85.vercel.app/
 
 ---
 
