@@ -1,9 +1,9 @@
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const API_KEY = "1b51eaad";
 const BASE_URL = "https://www.omdbapi.com/";
 
-export async function searchMovies(query, page = 1) {
+export const searchMovies = async (query, page = 1) => {
   const response = await fetch(
-    `${BASE_URL}?apikey=${API_KEY}&s=${encodeURIComponent(query)}&type=movie&page=${page}`
+    `${BASE_URL}?apikey=${API_KEY}&s=${query}&page=${page}`
   );
 
   const data = await response.json();
@@ -13,11 +13,10 @@ export async function searchMovies(query, page = 1) {
   }
 
   return data;
-}
-
-export async function getMovieDetails(id) {
+};
+export const getMovieDetails = async (id) => {
   const response = await fetch(
-    `${BASE_URL}?apikey=${API_KEY}&i=${id}&plot=full`
+    `https://www.omdbapi.com/?apikey=YOUR_API_KEY&i=${id}`
   );
 
   const data = await response.json();
@@ -27,4 +26,4 @@ export async function getMovieDetails(id) {
   }
 
   return data;
-}
+};

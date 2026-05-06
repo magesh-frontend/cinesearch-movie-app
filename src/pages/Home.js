@@ -45,6 +45,9 @@ function Home() {
     }, 500);
     return () => clearTimeout(debounceRef.current);
   }, [query]);
+  useEffect(() => {
+  fetchMovies("batman", 1);
+  }, []);
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
@@ -93,9 +96,11 @@ function Home() {
         </>
       )}
 
-      <div className="loading-container">
-  <div className="loader"></div>
-</div>
+      {loading && (
+  <div className="loading-container">
+    <div className="loader"></div>
+  </div>
+)}
 
       {!loading && hasMore && movies.length > 0 && (
         <div className="load-more-wrap">
