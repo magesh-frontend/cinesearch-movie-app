@@ -23,13 +23,13 @@ function Home() {
     try {
       const data = await searchMovies(searchQuery, pageNum);
       if (pageNum === 1) {
-        setMovies(data.Search);
+        setMovies(data.Search || []);
       } else {
-        setMovies((prev) => [...prev, ...data.Search]);
+        setMovies((prev) => [...prev, ...(data.Search || [])]);
       }
       setTotalResults(parseInt(data.totalResults, 10));
     } catch (err) {
-      setError(err.message);
+      setError("Failed to fetch movies. Try again.");
       if (pageNum === 1) setMovies([]);
     } finally {
       setLoading(false);
