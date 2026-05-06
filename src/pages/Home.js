@@ -27,7 +27,7 @@ function Home() {
       } else {
         setMovies((prev) => [...prev, ...(data.Search || [])]);
       }
-      setTotalResults(parseInt(data.totalResults, 10));
+      setTotalResults(parseInt(data.totalResults, 10) || 0);
     } catch (err) {
       setError("Failed to fetch movies. Try again.");
       if (pageNum === 1) setMovies([]);
@@ -55,7 +55,7 @@ function Home() {
     fetchMovies(query, nextPage);
   };
 
-  const hasMore = movies.length < totalResults;
+  const hasMore = totalResults > 0 && movies.length < totalResults;
 
   return (
     <div className="home">
@@ -95,6 +95,12 @@ function Home() {
           </div>
         </>
       )}
+
+      {!loading && !error && query && movies.length === 0 && (
+  <div className="no-results">
+    <p>😢 No movies found for "{query}"</p>
+  </div>
+)}
 
       {loading && (
   <div className="loading-container">
