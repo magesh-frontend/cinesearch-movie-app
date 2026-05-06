@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 2232d1c (docs: add professional README)
 # 🎬 CineSearch
 
 CineSearch is a responsive movie search application built using React.js and the OMDb API. The app allows users to search for movies, view posters and release details, and explore movie results through a clean and user-friendly interface.
