@@ -1,19 +1,18 @@
-
 # 🎬 CineSearch
 
-CineSearch is a responsive movie search application built using React.js and the OMDb API. The app allows users to search for movies, view posters and release details, and explore movie results through a clean and user-friendly interface.
+CineSearch is a responsive movie search web application built using React.js and the OMDb API. The application allows users to search for movies in real time, view movie posters, release years, and explore movie information through a clean and modern user interface.
 
 ---
 
 ## 🚀 Features
 
-* Search movies dynamically using the OMDb API
-* Display movie posters, titles, and release years
+* Real-time movie search
+* Fetch movie data using OMDb API
 * Responsive design for desktop and mobile devices
 * Reusable React components
-* Loading skeleton while fetching data
-* Error handling for invalid or empty searches
-* Clean and modern UI
+* Loading skeleton while fetching API data
+* Error handling for invalid searches
+* Clean and user-friendly UI
 
 ---
 
@@ -29,7 +28,7 @@ CineSearch is a responsive movie search application built using React.js and the
 
 ## 📁 Folder Structure
 
-```bash id="1x2vka"
+```bash
 src
 ├── components
 │   ├── MovieCard.jsx
@@ -38,7 +37,11 @@ src
 │
 ├── hooks
 ├── services
-│   └── api.js
+│   └── movieApi.js
+│
+├── pages
+│   ├── Home.js
+│   └── MovieDetail.js
 │
 ├── App.jsx
 ├── main.jsx
@@ -47,29 +50,29 @@ src
 
 ---
 
-## ⚙️ Getting Started
+## ⚙️ Installation
 
 ### Clone the repository
 
-```bash id="5z9q5x"
+```bash
 git clone https://github.com/magesh-frontend/cinesearch-movie-app.git
 ```
 
-### Navigate to the project
+### Navigate to the project directory
 
-```bash id="e6xk1m"
+```bash
 cd cinesearch-movie-app
 ```
 
 ### Install dependencies
 
-```bash id="3s7k9f"
+```bash
 npm install
 ```
 
 ### Run the development server
 
-```bash id="82f6zp"
+```bash
 npm run dev
 ```
 
@@ -79,29 +82,15 @@ npm run dev
 
 Create a `.env` file in the project root and add:
 
-```env id="7c2wnq"
+```env
 VITE_OMDB_API_KEY=your_api_key
-```
-
----
-
-## 📸 Preview
-
-Add screenshots of your application here.
-
-```md id="4m1kya"
-![CineSearch Preview](./screenshots/preview.png)
 ```
 
 ---
 
 ## 🌐 Live Demo
 
-Add your deployed project link here after deployment.
-
-```md id="jlwmr0"
 https://cinesearch-movie-32dlbfemr-magesh-frontends-projects.vercel.app
-```
 
 ---
 
@@ -117,13 +106,13 @@ https://cinesearch-movie-32dlbfemr-magesh-frontends-projects.vercel.app
 
 ---
 
-## 📌 Future Enhancements
+## 📌 Future Improvements
 
 * Watchlist functionality
-* Dark mode
-* Movie details page
+* Dark mode support
 * Pagination
-* Genre-based filtering
+* Genre filtering
+* Movie details enhancement
 
 ---
 
