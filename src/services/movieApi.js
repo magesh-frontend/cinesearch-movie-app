@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://www.omdbapi.com/";
-const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 export const searchMovies = async (query, page = 1) => {
   const response = await axios.get(BASE_URL, {
