@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { searchMovies } from "../services/movieApi";
 import MovieCard from '../components/MovieCard';
+import SkeletonCard from '../components/SkeletonCard';
 import './Home.css';
 
 function Home() {
@@ -10,6 +11,10 @@ function Home() {
   const [error, setError] = useState('');
   const [totalResults, setTotalResults] = useState(0);
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState("all");
+  const [searchHistory, setSearchHistory] = useState(
+  JSON.parse(localStorage.getItem("searchHistory")) || []
+);
   const debounceRef = useRef(null);
 
   const fetchMovies = async (searchQuery, pageNum = 1) => {
@@ -28,6 +33,21 @@ function Home() {
         setMovies((prev) => [...prev, ...(data.Search || [])]);
       }
       setTotalResults(parseInt(data.totalResults, 10) || 0);
+
+      if (searchQuery && pageNum === 1) {
+  const updatedHistory = [
+    searchQuery,
+    ...searchHistory.filter(
+      (item) => item.toLowerCase() !== searchQuery.toLowerCase()
+    ),
+  ].slice(0, 5);
+
+  setSearchHistory(updatedHistory);
+  localStorage.setItem(
+    "searchHistory",
+    JSON.stringify(updatedHistory)
+  );
+}
     } catch (err) {
       setError("Failed to fetch movies. Try again.");
       if (pageNum === 1) setMovies([]);
@@ -45,9 +65,7 @@ function Home() {
     }, 500);
     return () => clearTimeout(debounceRef.current);
   }, [query]);
-  useEffect(() => {
-  fetchMovies("batman", 1);
-  }, []);
+  
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
@@ -55,6 +73,10 @@ function Home() {
     fetchMovies(query, nextPage);
   };
 
+  const filteredMovies = movies.filter((movie) => {
+  if (filter === "all") return true;
+  return movie.Type === filter;
+});
   const hasMore = totalResults > 0 && movies.length < totalResults;
 
   return (
@@ -76,6 +98,41 @@ function Home() {
           )}
         </div>
       </div>
+      {searchHistory.length > 0 && (
+  <div className="search-history">
+    {searchHistory.map((item, index) => (
+      <button
+        key={index}
+        className="history-chip"
+        onClick={() => setQuery(item)}
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+)}
+<div className="filter-buttons">
+  <button
+    className={filter === "all" ? "active-filter" : ""}
+    onClick={() => setFilter("all")}
+  >
+    All
+  </button>
+
+  <button
+    className={filter === "movie" ? "active-filter" : ""}
+    onClick={() => setFilter("movie")}
+  >
+    Movies
+  </button>
+
+  <button
+    className={filter === "series" ? "active-filter" : ""}
+    onClick={() => setFilter("series")}
+  >
+    Series
+  </button>
+</div>
 
       {!query && !loading && (
         <div className="empty-state">
@@ -89,7 +146,7 @@ function Home() {
         <>
           <p className="results-count">{totalResults} results for "{query}"</p>
           <div className="movies-grid">
-            {movies.map((movie) => (
+            {filteredMovies.map((movie) => (
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
           </div>
@@ -103,8 +160,10 @@ function Home() {
 )}
 
       {loading && (
-  <div className="loading-container">
-    <div className="loader"></div>
+  <div className="movies-grid">
+    {[1, 2, 3, 4, 5, 6].map((item) => (
+      <SkeletonCard key={item} />
+    ))}
   </div>
 )}
 

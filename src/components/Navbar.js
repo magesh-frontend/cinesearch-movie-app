@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ darkMode, setDarkMode }) {
   const { favorites } = useFavorites();
   const location = useLocation();
 
@@ -12,16 +12,28 @@ function Navbar() {
       <Link to="/" className="navbar-logo">
         🎬 CineSearch
       </Link>
+
       <div className="navbar-links">
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
           Home
         </Link>
-        <Link to="/favorites" className={location.pathname === '/favorites' ? 'active' : ''}>
+
+        <Link
+          to="/favorites"
+          className={location.pathname === '/favorites' ? 'active' : ''}
+        >
           Favorites
           {favorites.length > 0 && (
             <span className="fav-count">{favorites.length}</span>
           )}
         </Link>
+
+        <button
+          className="theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? '☀️ Light' : '🌙 Dark'}
+        </button>
       </div>
     </nav>
   );

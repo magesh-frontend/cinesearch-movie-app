@@ -83,7 +83,7 @@ npm run dev
 Create a `.env` file in the project root and add:
 
 ```env
-VITE_OMDB_API_KEY=your_api_key
+VITE_OMDB_API_KEY=1b51eaad
 ```
 
 ---
