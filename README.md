@@ -1,123 +1,66 @@
-# 🎬 CineSearch
+#  CineSearch Movie App
 
-CineSearch is a responsive movie search web application built using React.js and the OMDb API. The application allows users to search for movies in real time, view movie posters, release years, and explore movie information through a clean and modern user interface.
+A movie search application built using React.js.
 
----
+Users can search movies, view details, save favorites, and explore movies with a clean UI.
 
-## 🚀 Features
+## Live Demo
+https://cinesearch-movie-app-zo85.vercel.app/
 
-* Real-time movie search
-* Fetch movie data using OMDb API
-* Responsive design for desktop and mobile devices
-* Reusable React components
-* Loading skeleton while fetching API data
-* Error handling for invalid searches
-* Clean and user-friendly UI
+## Features
+- Search movies instantly
+- Movie details page
+- Favorites page
+- Dark / Light mode toggle
+- Filter (All / Movies / Series)
+- Search history
+- Skeleton loading
+- Responsive design
+- Load more option
 
----
+## Built With
+- React.js
+- React Router
+- Context API
+- CSS
+- OMDb API
+- LocalStorage
 
-## 🛠 Tech Stack
+## What I Practiced
+In this project I worked on:
 
-* React.js
-* JavaScript (ES6+)
-* CSS3
-* Vite
-* OMDb API
+- React Hooks (`useState`, `useEffect`, `useRef`)
+- API fetching
+- Debounce search
+- Context API
+- Conditional rendering
+- Component based structure
+- Theme toggle
+- localStorage handling
 
----
-
-## 📁 Folder Structure
-
-```bash
-src
-├── components
-│   ├── MovieCard.jsx
-│   ├── SearchBar.jsx
-│   └── SkeletonCard.jsx
-│
-├── hooks
-├── services
-│   └── movieApi.js
-│
-├── pages
-│   ├── Home.js
-│   └── MovieDetail.js
-│
-├── App.jsx
-├── main.jsx
-└── index.css
-```
-
----
-
-## ⚙️ Installation
-
-### Clone the repository
+## Run Locally
 
 ```bash
 git clone https://github.com/magesh-frontend/cinesearch-movie-app.git
-```
-
-### Navigate to the project directory
-
-```bash
 cd cinesearch-movie-app
-```
-
-### Install dependencies
-
-```bash
 npm install
+npm start
 ```
 
-### Run the development server
+## Project Structure
 
 ```bash
-npm run dev
+src/
+ ├── components/
+ ├── context/
+ ├── pages/
+ ├── services/
+ ├── App.js
+ └── index.js
 ```
 
----
+## Developer
+Magesh B
 
-## 🔑 Environment Variables
-
-Create a `.env` file in the project root and add:
-
-```env
-VITE_OMDB_API_KEY=1b51eaad
-```
-
----
-
-## 🌐 Live Demo
-
-https://cinesearch-movie-app-zo85.vercel.app/
-
----
-
-## 📚 Concepts Practiced
-
-* React Hooks
-* API Integration
-* State Management
-* Conditional Rendering
-* Reusable Components
-* Responsive UI Design
-* Async/Await Handling
-
----
-
-## 📌 Future Improvements
-
-* Watchlist functionality
-* Dark mode support
-* Pagination
-* Genre filtering
-* Movie details enhancement
-
----
-
-## 👨‍💻 Developer
-
-Magesh
-
-GitHub: https://github.com/magesh-frontend
+GitHub:
+https://github.com/magesh-frontend
